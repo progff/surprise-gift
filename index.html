@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Surprise</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- حاوية خلفية النجوم والقلوب -->
+    <div id="particles-container"></div>
+
+    <!-- 🚪1. بوابة الدخول -->
+    <div id="login-gate" class="card gate-card">
+        <h2>Enter Passcode 🔒</h2>
+        <input type="password" id="pass-input" placeholder="Enter code here...">
+        <button id="unlock-btn">Unlock</button>
+        <p id="error-msg" class="error-text hidden">Please read the pass code on the back</p>
+    </div>
+
+    <!-- 🌟 2. المحتوى الرئيسي -->
+    <div id="main-content" class="container hidden">
+
+        <!-- 🪪 كارت البيانات الشخصية -->
+        <div id="profile-card" class="card">
+            <h1 id="p-name">Loading...</h1>
+            <p class="subtitle"><span id="p-dob"></span> | <span id="p-year"></span></p>
+            <h3>Special Traits ✨</h3>
+            <ul id="p-traits"></ul>
+        </div>
+
+        <!-- 🧩 الفزورة الأولى -->
+        <div id="q1-card" class="card quiz-card">
+            <h3 id="q1-text"></h3>
+            <div class="input-group">
+                <input type="text" id="q1-input" placeholder="Type your answer...">
+                <button id="q1-btn">Submit</button>
+            </div>
+            <p id="q1-feedback" class="feedback"></p>
+            
+            <!-- صورة الذكرى الأولى -->
+            <div class="img-wrapper">
+                <img id="img1" class="quiz-img hidden" src="Images/q1-1.jpg" alt="Concert Memory">
+            </div>
+        </div>
+
+        <!-- 🧩 الفزورة الثانية (خاصة بالفيلم) -->
+        <div id="q2-card" class="card quiz-card">
+            <h3 id="q2-text">What movie did we watch together for nour elnabawy?</h3>
+            <div class="input-group">
+                <input type="text" id="q2-input" placeholder="Type your answer...">
+                <button id="q2-btn">Submit</button>
+            </div>
+            <p id="q2-feedback" class="feedback"></p>
+            
+            <!-- صورتين للذكرى الثانية -->
+            <div class="img-wrapper">
+                <img id="img2-1" class="quiz-img hidden" src="Images/q2-1.jpg" alt="Movie Memory 1">
+                <img id="img2-2" class="quiz-img hidden" src="Images/q2-2.jpg" alt="Movie Memory 2">
+            </div>
+        </div>
+
+        <!-- 🧩 الفزورة الثالثة -->
+        <div id="q3-card" class="card quiz-card">
+            <h3 id="ques_3"></h3>
+            <div class="input-group">
+                <input type="text" id="answer_3" placeholder="Type your answer...">
+                <button id="btn_3">Submit</button>
+            </div>
+            <p id="feedback_3" class="feedback"></p>
+            
+            <!-- الصورة الكبيرة ولينك الأغنية -->
+            <div id="q3-result" class="result-box">
+                <img id="ques3_photo" class="quiz-img hero-img hidden" src="Images/hero.jpg" alt="Birthday Memory">
+                
+                <!-- زرار الأغنية بشعار النبضات الصوتية -->
+                <a id="song-link" href="#" target="_blank" class="sound-wave-btn hidden">
+                    <span class="wave"></span>
+                    <span class="wave"></span>
+                    <span class="wave"></span>
+                    <span class="btn-text">🎵 Listen to Our Song</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- ✉️ كارد الرسالة النهائية -->
+        <div id="End" class="card letter-frame hidden">
+            <div class="stamp">❤️</div>
+            <h2>Special Letter For You</h2>
+            <div class="letter-line"></div>
+            <p id="final-msg" class="arabic-text"></p>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

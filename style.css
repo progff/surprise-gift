@@ -1,0 +1,329 @@
+/* ==========================================
+   1. General Setup & Animated Background
+   ========================================== */
+
+/* استيراد الخطوط وضبط الأبعاد الأساسية */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif; /* الخط الإنجليزي الأساسي */
+}
+
+/* خلفية الصفحة ككل وتدرج الألوان الدافئ */
+body {
+    background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 50%, #f7d6d0 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* حاوية القلوب والنجوم المتساقطة في الخلفية */
+#particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* عشان النجوم والقلوب ما تمنعش الكليك على الأزرار */
+    z-index: 0;
+}
+
+/* شكل وحركة القلوب/النجوم المتساقطة */
+.particle {
+    position: absolute;
+    top: -20px;
+    opacity: 0.7;
+    animation: fall linear infinite;
+}
+
+/* أنيميشن التساقط ببطء من الأعلى للأسفل */
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0.2;
+    }
+}
+/* ==========================================
+   2. Container, Cards & Visibility
+   ========================================== */
+
+.container {
+    width: 100%;
+    max-width: 500px; /* عرض الكروت الأساسي */
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* المسافة بين كل كارت والتاني */
+    z-index: 1;
+}
+
+/* تصميم الكارت الأبيض الطافي */
+.card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px); /* إحساس الزجاج الناعم */
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(220, 160, 160, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+/* كلاس الإخفاء العام */
+.hidden {
+    display: none !important;
+}
+
+/* أنيميشن إظهار العناصر بسلاسة برقة */
+.card, .quiz-img, .sound-wave-btn {
+    animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ==========================================
+   3. Login Gate & Inputs / Buttons
+   ========================================== */
+
+.gate-card {
+    width: 100%;
+    max-width: 400px;
+    z-index: 2;
+}
+
+.gate-card h2 {
+    color: #5a4b4c;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+/* خانة كتابة الباسورد والأجوبة */
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 12px 18px;
+    border: 2px solid #ffd1dc;
+    border-radius: 12px;
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    background: #fffafa;
+    text-align: center;
+}
+
+input:focus {
+    border-color: #ff8b94; /* تغيير لون الإطار لما تضغطي جوه الخانة */
+}
+
+/* تصميم الأزرار المبهجة */
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #ff8b94, #ffaaa5);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 139, 148, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px); /* كأن الزرار بيترفع سنة لما تعدي عليه */
+    box-shadow: 0 6px 20px rgba(255, 139, 148, 0.6);
+}
+
+.error-text {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+/* ==========================================
+   4. Profile Card & Quiz Images
+   ========================================== */
+
+#p-name {
+    color: #4a3e3d;
+    font-size: 1.8rem;
+}
+
+.subtitle {
+    color: #8c7b7a;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+#p-traits {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+#p-traits li {
+    background: #fff0f3;
+    color: #6b5254;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 6px 0;
+    font-size: 0.9rem;
+}
+
+/* تنسيق الصور والإطارات */
+.img-wrapper, .img-gallery {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.quiz-img {
+    width: 100%;
+    border-radius: 15px;
+    border: 4px solid #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    object-fit: cover;
+}
+
+/* الصورة الكبيرة لفزورة العيد ميلاد */
+.hero-img {
+    max-height: 350px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+/* ==========================================
+   5. Music Player Sound Wave Button
+   ========================================== */
+
+.sound-wave-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+    padding: 12px 22px;
+    background: linear-gradient(135deg, #a8e6cf, #dbede6);
+    color: #2d5a4c;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(168, 230, 207, 0.5);
+    transition: transform 0.3s;
+}
+
+.sound-wave-btn:hover {
+    transform: scale(1.03);
+}
+
+/* تصميم أعمدة النبضات الصوتية */
+.wave {
+    display: inline-block;
+    width: 4px;
+    height: 16px;
+    background-color: #2d5a4c;
+    border-radius: 2px;
+    animation: wavePulse 1s ease-in-out infinite alternate;
+}
+
+.wave:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.wave:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes wavePulse {
+    0% { height: 6px; }
+    100% { height: 20px; }
+}
+/* ==========================================
+   6. Vintage Letter Frame & Mobile Responsiveness
+   ========================================== */
+
+/* تصميم فريم الجواب القديم */
+.letter-frame {
+    background: #fdfbf7; /* لون الورق القديم المائل للكريمي */
+    border: 2px dashed #d4c5b9;
+    position: relative;
+    padding: 35px 25px;
+    box-shadow: 0 10px 25px rgba(180, 160, 140, 0.15);
+}
+
+/* طابع البريد الصغير فوق الجواب */
+.stamp {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 40px;
+    border: 2px dashed #e5989b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    background: #fff5f5;
+}
+
+.letter-line {
+    width: 60px;
+    height: 3px;
+    background: #e5989b;
+    margin: 10px auto 20px auto;
+    border-radius: 2px;
+}
+
+/* تطبيق خط Tajawal والتنسيق العربي للرسالة */
+.arabic-text {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #4a3b32;
+    direction: rtl; /* اتجاه الكتابة من اليمين للشمال */
+    text-align: right;
+}
+
+/* ضبط التصميم للموبايل الشاشات الصغيرة */
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+    
+    .card {
+        padding: 20px 15px;
+    }
+
+    #p-name {
+        font-size: 1.5rem;
+    }
+
+    .arabic-text {
+        font-size: 1rem;
+    }
+}
+/* كلاس الإخفاء العام (تأكدي إنه مكتوب كده في style.css) */
+.hidden {
+    display: none !important;
+}
